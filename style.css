@@ -6,7 +6,7 @@
 
 .album {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
     overflow: hidden;
     margin: 120px 0;
@@ -28,4 +28,18 @@
 .void {
     height: 1000px;
     background-color: red;
+}
+
+.col-4 {
+    display: none;
+}
+
+@media screen and (min-width: 766px) {
+    .album {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .col-4 {
+        display: flex
+    }
 }
