@@ -15,9 +15,9 @@
     object-fit: cover;
 }
 
-/* .album {
-    perspective: 1600px;
-} */
+.album {
+    overflow: hidden;
+}
 
 .album-wrapper {
     perspective: 1600px;
@@ -27,9 +27,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 16px;
-    overflow: hidden;
     transition: all .7s;
+    
+    /* test */
     min-height: auto;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    margin-top: -50px;
+    overflow: hidden;
 }
 
 .album__col {
@@ -39,6 +44,7 @@
     grid-column-gap: 16px;
     grid-row-gap: 16px;
     transition: all .7s;
+    transform-style: preserve-3d;
 }
 
 .album__item {
@@ -54,9 +60,10 @@
     display: none;
 }
 
-.content__inner {
+.content {
     background-color: white;
-    height: 100%; /* remove later */
+    height: 800px; /* remove later */
+    transition: all .7s;
 
 }
 
@@ -67,14 +74,11 @@
 
     .album__grid {
         grid-template-columns: repeat(4, 1fr);
-       
-        padding-bottom: 60px;
     }
 
     .album__col {
-        /* transform: translate3d(0px, 10vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-        transform-style: preserve-3d; */
-     
+        transform: translate3d(0px, 10vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
     }
     
 
@@ -91,6 +95,7 @@
         height: 100dvh;
         width: 50%;
         z-index: 10;
+        height: 100%; /* remove later */
     }
 
     .album__grid {

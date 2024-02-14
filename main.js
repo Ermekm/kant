@@ -20,17 +20,32 @@ window.addEventListener("scroll", function (e) {
 
 function shiftAlbum() {
   const album = document.getElementById("album__grid");
-  const albumHeight = album.offsetHeight;
-  let dist = getElementDistanceFromViewportTop(album) + window.innerHeight / 2;
+  let albumHeight = album.offsetHeight;
+  let dist = getElementDistanceFromViewportTop(album);
+  if (window.innerWidth < 992) {
+    dist += window.innerHeight / 2;
+  } else {
+    dist -= albumHeight /3
+    albumHeight /=2 
+  }
   if (dist < 0) {
     dist = 0;
   } else if (dist > albumHeight) {
     dist = albumHeight;
   }
-  let albumShiftRatio = (dist / albumHeight) * 6 - 6;
+  let albumShiftRatio = (dist / albumHeight) * 5 - 5;
+  if (window.innerWidth > 991) {
+    albumShiftRatio *= 2;
+  }
+  console.log(dist)
+  console.log(albumHeight);
   elements.forEach((element) => {
     albumShiftRatio *= -1;
-    element.style.transform = "translateY(" + albumShiftRatio * 2 + "vh)";
+    // element.style.transform = "translateY(" + albumShiftRatio + "vh)";
+    element.style.transform =
+      "translate3d(0px," +
+      albumShiftRatio +
+      "vh, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)";
   });
 
   if (window.innerWidth > 991) {
